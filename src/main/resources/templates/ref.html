@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Refactor user</title>
+</head>
+<body>
+
+<form th:method="PATCH" th:action="@{/user(id=${user.getId()})}" th:object="${user}">
+  <label for="name">   Enter name: </label>
+  <input type="text" th:field="*{name}" id="name"/>
+    <div style="color: brown" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</div>
+  <br>
+  <br>
+  <label for="nickname">Put nickname: </label>
+  <input type="text" th:field="*{nickname}" id="nickname"/>
+    <div style="color: brown" th:if="${#fields.hasErrors('nickname')}" th:errors="*{nickname}">Nickname error</div>
+  <br>
+  <br>
+  <input type="submit" value="Update!"/>
+</form>
+<br>
+<form th:method="DELETE " th:action="@{/user(id=${user.getId()})}">
+  <input type="submit" value="Delete">
+</form>
+      <br>
+<a href="/">Go back to UsersList</a>
+</body>
+</html>
